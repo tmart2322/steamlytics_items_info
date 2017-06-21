@@ -57,7 +57,7 @@ var steamlytics = new SteamlyticsAPI("", (api, account) => { // the constructor 
                                continue;
                            }
                        }
-                       if (firstSeen > lastest_time)
+                       if (firstSeen > lastest_time || firstSeen < earliest_time)
                        {
                            continue;
                        }
