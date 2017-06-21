@@ -9,19 +9,20 @@ var steamlytics = new SteamlyticsAPI("", (api, account) => { // the constructor 
                var stream = fs.createWriteStream("pricelist.txt");
 
                //V2 Pricelist - safe_net_price
-               const max_safe_net_price = 2.00;
-               const min_safe_net_price = .01;
+               const max_safe_net_price = 0; //Items with safe_net_price higher than this will not be included in output
+               const min_safe_net_price = 0; //Items with safe_net_price less than this will not be included in output
 
                //V2 Pricelist - total_volume
-               const max_total_volume = 2000;
-               const min_total_volume = 1000;
+               const max_total_volume = 0; //Items sold more than this amount will not be included in output
+               const min_total_volume = 0; //Items sold less than this amount will not be included in output
 
                //V2 Pricelist - ongoing_price_manipulation
-               const restrict_output = true; //If true then desired_output will output items that match JSON ongoing_price_manipulation output
+               const restrict_output = false; //If true then desired_output will only output items that match JSON ongoing_price_manipulation output
                const desired_output = false;
 
                //V2 Pricelist - first_seen
-               const lastest_time = 1465689600;
+               const lastest_time = 0; //Prices sold for the first time after this time will not be included in output
+               const earliest_time = 0; //Items sold for the first time before this time will not be included in output
 
                stream.once('open', function(fd) {
                    for (var i = 0; i < arrayItems.length; i++) {
